@@ -5,9 +5,9 @@ import { Box } from '@material-ui/core'
 const RedirectTool = props => {
   return (
     <Box width={600}>
-      <form name="redirect" netlify>
-        <label>Long URL</label>
-        <input type="text" name="longUrl" />
+      <form name="redirect" method="POST" netlify>
+        <label>Long URL <input type="text" name="longUrl" /></label>
+
         <button type="submit">Submit</button>
       </form>
     </Box>
