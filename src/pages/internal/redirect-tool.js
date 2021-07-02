@@ -25,7 +25,7 @@ const RedirectTool = props => {
 
   if (user) {
     return (
-      <Box width={600}>
+      <Box width={600} p={4}>
         <form name="redirect" method="post" data-netlify="true">
           <input type="hidden" name="form-name" value="redirect" />
           <div>
@@ -42,14 +42,22 @@ const RedirectTool = props => {
             <button type="submit">Send</button>
           </div>
         </form>
-        <Button onClick={logout}>Logout</Button>
+        <Button variant="contained" color="primary" onClick={logout}>
+          Logout
+        </Button>
       </Box>
     )
   }
 
   return (
-    <Box width={600}>
-      <Button onClick={() => authenticate(window.history.back)}>Login</Button>
+    <Box width={600} p={4}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => authenticate(window.history.back)}
+      >
+        Login
+      </Button>
     </Box>
   )
 }
