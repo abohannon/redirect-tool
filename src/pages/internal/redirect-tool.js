@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
+import netlifyIdentity from "netlify-identity-widget"
 import { Box, Button } from "@material-ui/core"
 
 const RedirectTool = props => {
