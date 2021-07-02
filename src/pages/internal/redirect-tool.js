@@ -1,39 +1,30 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Box } from '@material-ui/core'
+import React from "react"
+import PropTypes from "prop-types"
+import { Box } from "@material-ui/core"
 
 const RedirectTool = props => {
   return (
     <Box width={600}>
-      <form name="contact" method="post" data-netlify="true">
-       <input type="hidden" name="form-name" value="contact" />
-        <p>
-          <label>Your Name: <input type="text" name="name" /></label>
-        </p>
-        <p>
-          <label>Your Email: <input type="email" name="email" /></label>
-        </p>
-        <p>
-          <label>Your Role: <select name="role[]" multiple>
-            <option value="leader">Leader</option>
-            <option value="follower">Follower</option>
-          </select></label>
-        </p>
-        <p>
-          <label>Message: <textarea name="message"></textarea></label>
-        </p>
-        <p>
+      <form name="redirect" method="post" data-netlify="true">
+        <input type="hidden" name="form-name" value="redirect" />
+        <div>
+          <label>
+            URL to shorten: <input type="text" name="url" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Public URL path: <input type="text" name="public_path" />
+          </label>
+        </div>
+        <div>
           <button type="submit">Send</button>
-        </p>
+        </div>
       </form>
     </Box>
-
-
   )
 }
 
-RedirectTool.propTypes = {
-
-}
+RedirectTool.propTypes = {}
 
 export default RedirectTool
