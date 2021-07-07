@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import netlifyIdentity from "netlify-identity-widget"
 import { Box, Button } from "@material-ui/core"
@@ -7,7 +7,12 @@ const RedirectTool = props => {
   const [authed, setAuthed] = useState(false)
   const [user, setUser] = useState()
 
+  useEffect(() => {
+    netlifyIdentity.init({})
+  }, [])
+
   const authenticate = (callback = () => {}) => {
+    console.log("authenticate")
     netlifyIdentity.open()
     netlifyIdentity.on("login", user => {
       setUser(user)
@@ -42,7 +47,7 @@ const RedirectTool = props => {
             <button type="submit">Send</button>
           </div>
         </form>
-        <Button variant="contained" color="primary" onClick={logout}>
+        <Button variant="contained" color="primary" onClick={() => logout()}>
           Logout
         </Button>
       </Box>
@@ -54,7 +59,7 @@ const RedirectTool = props => {
       <Button
         variant="contained"
         color="primary"
-        onClick={() => authenticate(window.history.back)}
+        onClick={() => authenticate()}
       >
         Login
       </Button>
