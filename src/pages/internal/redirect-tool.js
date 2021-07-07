@@ -63,6 +63,11 @@ const RedirectTool = props => {
       >
         Login
       </Button>
+      <form name="redirect-form" method="post" data-netlify="true">
+        <input type="hidden" name="form-name" value="redirect-form" />
+        <input type="hidden" name="url" />
+        <input type="hidden" name="public_path" />
+      </form>
     </Box>
   )
 }
