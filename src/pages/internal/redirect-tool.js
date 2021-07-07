@@ -4,12 +4,30 @@ import netlifyIdentity from "netlify-identity-widget"
 import { Box, Button } from "@material-ui/core"
 
 const RedirectTool = props => {
-  const [authed, setAuthed] = useState(false)
+  const [values, setValues] = useState({
+    "form-name": "redirect-form",
+    url: "",
+    public_path: "",
+  })
   const [user, setUser] = useState()
 
   useEffect(() => {
-    netlifyIdentity.init({})
+    netlifyIdentity.init()
   }, [])
+
+  useEffect(() => {
+    const user = netlifyIdentity.currentUser()
+    setUser(user)
+  }, [user])
+
+  const handleChange = ({ target }) => {
+    const { name, value } = target
+
+    setValues(prevValues => ({
+      ...prevValues,
+      [name]: value,
+    }))
+  }
 
   const authenticate = (callback = () => {}) => {
     console.log("authenticate")
@@ -28,19 +46,63 @@ const RedirectTool = props => {
     })
   }
 
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+
+    console.log("values", values)
+
+    fetch("/internal/redirect-form/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "redirect-form",
+        ...values,
+      }),
+    })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.error(error)
+      })
+  }
+
   if (user) {
     return (
       <Box width={600} p={4}>
-        <form name="redirect-form" method="post" data-netlify="true">
+        <form
+          id="form"
+          name="redirect-form"
+          data-netlify="true"
+          onSubmit={handleSubmit}
+        >
           <input type="hidden" name="form-name" value="redirect-form" />
           <p>
             <label>
-              URL to shorten: <input type="text" name="url" />
+              URL to shorten:{" "}
+              <input
+                type="text"
+                name="url"
+                value={values.url}
+                onChange={handleChange}
+              />
             </label>
           </p>
           <p>
             <label>
-              Public URL path: <input type="text" name="public_path" />
+              Public URL path:{" "}
+              <input
+                type="text"
+                name="public_path"
+                value={values.public_path}
+                onChange={handleChange}
+              />
             </label>
           </p>
           <p>
@@ -63,11 +125,6 @@ const RedirectTool = props => {
       >
         Login
       </Button>
-      <form name="redirect-form" method="post" data-netlify="true">
-        <input type="hidden" name="form-name" value="redirect-form" />
-        <input type="hidden" name="url" />
-        <input type="hidden" name="public_path" />
-      </form>
     </Box>
   )
 }
