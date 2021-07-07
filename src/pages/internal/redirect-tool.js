@@ -31,21 +31,21 @@ const RedirectTool = props => {
   if (user) {
     return (
       <Box width={600} p={4}>
-        <form name="redirect" method="post" data-netlify="true">
-          <input type="hidden" name="form-name" value="redirect" />
-          <div>
+        <form name="redirect-form" method="post" data-netlify="true">
+          <input type="hidden" name="form-name" value="redirect-form" />
+          <p>
             <label>
               URL to shorten: <input type="text" name="url" />
             </label>
-          </div>
-          <div>
+          </p>
+          <p>
             <label>
               Public URL path: <input type="text" name="public_path" />
             </label>
-          </div>
-          <div>
+          </p>
+          <p>
             <button type="submit">Send</button>
-          </div>
+          </p>
         </form>
         <Button variant="contained" color="primary" onClick={() => logout()}>
           Logout
