@@ -8,7 +8,7 @@ const encode = data => {
 
 exports.handler = async function (event, context) {
   const encodedBody = encode(JSON.parse(event.body))
-
+  console.log("encodedBody", encodedBody)
   fetch("https://heuristic-clarke-9e129f.netlify.app/internal/redirect-tool/", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },

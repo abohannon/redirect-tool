@@ -121,6 +121,9 @@ const RedirectTool = props => {
 
   return (
     <Box width={600} p={4}>
+      <form id="form" name="redirect-form" data-netlify="true">
+        <input type="hidden" name="form-name" value="redirect-form" />
+      </form>
       <Button
         variant="contained"
         color="primary"
