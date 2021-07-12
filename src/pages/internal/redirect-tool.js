@@ -123,6 +123,11 @@ const RedirectTool = props => {
     <Box width={600} p={4}>
       <form id="form" name="redirect-form" data-netlify="true">
         <input type="hidden" name="form-name" value="redirect-form" />
+        <input type="hidden" name="form-name" value="redirect-form" />
+        <input type="hidden" name="creator" />
+        <input type="hidden" name="timestamp" />
+        <input type="hidden" name="originalUrl" />
+        <input type="hidden" name="redirectUrl" />
       </form>
       <Button
         variant="contained"
