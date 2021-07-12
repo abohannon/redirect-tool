@@ -84,12 +84,14 @@ const RedirectTool = props => {
           onSubmit={handleSubmit}
         >
           <input type="hidden" name="form-name" value="redirect-form" />
+          <input type="hidden" name="creator" />
+          <input type="hidden" name="timestamp" />
           <p>
             <label>
-              URL to shorten:{" "}
+              Original URL:{" "}
               <input
                 type="text"
-                name="url"
+                name="originalUrl"
                 value={values.url}
                 onChange={handleChange}
               />
@@ -97,10 +99,10 @@ const RedirectTool = props => {
           </p>
           <p>
             <label>
-              Public URL path:{" "}
+              Redirect URL:{" "}
               <input
                 type="text"
-                name="public_path"
+                name="redirectUrl"
                 value={values.public_path}
                 onChange={handleChange}
               />
