@@ -17,6 +17,7 @@ const RedirectTool = props => {
 
   useEffect(() => {
     const user = netlifyIdentity.currentUser()
+    console.log("user", user)
     setUser(user)
   }, [user])
 
@@ -57,7 +58,7 @@ const RedirectTool = props => {
 
     console.log("values", values)
 
-    fetch("/internal/redirect-form/", {
+    fetch("http://localhost:51512/.netlify/functions/create-redirect", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({

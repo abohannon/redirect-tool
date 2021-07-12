@@ -1,7 +1,13 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
+const fs = require("fs")
 
-// You can delete this file if you're not using it
+exports.onPostBuild = () => {
+  console.log("ON PRE BUIIILLLLLDDD!!")
+  const buildDir = "public"
+  const routes = ["/hey/ /ho/ 301", "/heyo/ /hoho/ 301"]
+
+  const stream = fs.createWriteStream(buildDir + "/_redirects", { flags: "a" })
+
+  routes.forEach(route => {
+    stream.write(route + "\n")
+  })
+}
