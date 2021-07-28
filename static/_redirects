@@ -1,2 +1,2 @@
-/hello/  /hello/temp/ 302
-/hello/temp/ /hello/?utm_source=foo 301!
+/hello/* /hello/:splat?utm_source=foo 301!
+
