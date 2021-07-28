@@ -1,12 +1,12 @@
 const fs = require("fs")
+const fetch = require("node-fetch")
 
-exports.onPostBuild = () => {
-  const buildDir = "public"
-  const routes = ["/hey/ /ho/ 301", "/heyo/ /hoho/ 301"]
+// exports.onPostBuild = () => {
+//   const buildDir = "public"
 
-  const stream = fs.createWriteStream(buildDir + "/_redirects", { flags: "a" })
+//   const stream = fs.createWriteStream(buildDir + "/_redirects", { flags: "a" })
 
-  routes.forEach(route => {
-    stream.write(route + "\n")
-  })
-}
+//   routes.forEach(route => {
+//     stream.write(route + "\n")
+//   })
+// }
