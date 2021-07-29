@@ -1,2 +1,3 @@
-/hello /hello/?utm_source=foo 200!
+/hello/ utm_source=:utm_source /hello/?utm_source=:utm_source 200!
+/hello/                        /hello/?utm_source=foo 301!
 
