@@ -1,3 +1,5 @@
 /hello/ utm_source=:source utm_campaign=:campaign mc=:mc  /hello/?utm_source=:source&utm_campaign=:campaign&mc=:mc        200!
 /hello/                                                   /hello/?utm_source=foo&utm_campaign=bar&mc=google               301!
 
+/goodbye/ utm_source=:source utm_campaign=:campaign mc=:mc /goodbye/?utm_source=:source&utm_campaign=:campaign&mc=:mc     200!
+/goodbye/ /goodbye/?utm_campaign=bar
