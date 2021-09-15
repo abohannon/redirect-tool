@@ -20,7 +20,7 @@ const IndexPage = () => (
       style={{ marginBottom: `1.45rem` }}
     />
     <p>
-      <a href="https://www.housecallpro-staging.com">
+      <a href="https://www.housecallpro-staging.com/?mc=foo&utm_source=bar&utm_campaign=baz">
         Go to Housecall Pro staging
       </a>
     </p>
